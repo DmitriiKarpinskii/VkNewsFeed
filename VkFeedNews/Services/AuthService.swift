@@ -9,7 +9,7 @@ import Foundation
 import VKSdkFramework
 
 protocol AuthServiceDelegate: class {
-    func authSetviceShouldShow(viewController: UIViewController)
+    func authServiceShouldShow(viewController: UIViewController)
     func authServicesSignIn()
     func authServicesSignInDidFail()
 }
@@ -32,7 +32,7 @@ class AuthService : NSObject, VKSdkDelegate , VKSdkUIDelegate {
     
     func wakeUpSession() {
         let scope = ["offline"]
-        VKSdk.wakeUpSession(scope) { (state , error) in
+        VKSdk.wakeUpSession(scope) { [delegate] (state , error) in
             switch state {
            
             case .initialized:
@@ -40,15 +40,20 @@ class AuthService : NSObject, VKSdkDelegate , VKSdkUIDelegate {
                 VKSdk.authorize(scope)
             case .authorized:
                 print("authorized")
+                delegate?.authServicesSignIn()
             default:
-                fatalError(error!.localizedDescription)
+                delegate?.authServicesSignInDidFail()
             }
         }
     }
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
-        delegate?.authServicesSignIn()
+        
+        if result.token != nil {
+        // Пользователь успешно авторизован
+            delegate?.authServicesSignIn()
+        }
     }
     
     func vkSdkUserAuthorizationFailed() {
@@ -58,7 +63,7 @@ class AuthService : NSObject, VKSdkDelegate , VKSdkUIDelegate {
     
     func vkSdkShouldPresent(_ controller: UIViewController!) {
         print(#function)
-        delegate?.authSetviceShouldShow(viewController: controller)
+        delegate?.authServiceShouldShow(viewController: controller)
     }
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
