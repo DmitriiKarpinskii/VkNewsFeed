@@ -17,6 +17,8 @@
 		7005065D266BA27A00168A21 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7005065C266BA27A00168A21 /* AuthViewController.storyboard */; };
 		70050661266BBA4400168A21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050660266BBA4400168A21 /* FeedViewController.swift */; };
 		70050673266BBC1900168A21 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70050672266BBC1900168A21 /* FeedViewController.storyboard */; };
+		7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005067C266BC0AE00168A21 /* NetworkService.swift */; };
+		70050682266BC26300168A21 /* APIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050681266BC26300168A21 /* APIStruct.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		7005065C266BA27A00168A21 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
 		70050660266BBA4400168A21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		70050672266BBC1900168A21 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
+		7005067C266BC0AE00168A21 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		70050681266BC26300168A21 /* APIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +72,9 @@
 			children = (
 				70050637266B991600168A21 /* AppDelegate.swift */,
 				70050639266B991600168A21 /* SceneDelegate.swift */,
-				70050666266BBAB700168A21 /* FeedViewController */,
-				7005067A266BBC7D00168A21 /* Auth */,
 				70050658266BA06E00168A21 /* Services */,
+				7005067A266BBC7D00168A21 /* Auth */,
+				70050666266BBAB700168A21 /* FeedViewController */,
 				70050640266B991700168A21 /* Assets.xcassets */,
 				70050642266B991700168A21 /* LaunchScreen.storyboard */,
 				70050645266B991700168A21 /* Info.plist */,
@@ -90,6 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				70050655266BA06000168A21 /* AuthService.swift */,
+				7005067C266BC0AE00168A21 /* NetworkService.swift */,
+				70050681266BC26300168A21 /* APIStruct.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -209,7 +215,9 @@
 				70050638266B991600168A21 /* AppDelegate.swift in Sources */,
 				70050661266BBA4400168A21 /* FeedViewController.swift in Sources */,
 				7005063A266B991600168A21 /* SceneDelegate.swift in Sources */,
+				7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */,
 				70050656266BA06000168A21 /* AuthService.swift in Sources */,
+				70050682266BC26300168A21 /* APIStruct.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
