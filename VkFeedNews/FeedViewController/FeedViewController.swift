@@ -15,7 +15,9 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
     
         view.backgroundColor = .systemBlue
-        networkService.getFeed()
+        networkService.request(path: "/method/newsfeed.get", params: ["":""]) { (_, _) in
+            return
+        }
     }
     
     
