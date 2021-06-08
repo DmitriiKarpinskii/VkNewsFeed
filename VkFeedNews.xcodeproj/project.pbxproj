@@ -19,6 +19,8 @@
 		70050673266BBC1900168A21 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70050672266BBC1900168A21 /* FeedViewController.storyboard */; };
 		7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005067C266BC0AE00168A21 /* NetworkService.swift */; };
 		70050682266BC26300168A21 /* APIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050681266BC26300168A21 /* APIStruct.swift */; };
+		7056071B266FC69700510BA7 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7056071A266FC69700510BA7 /* FeedResponse.swift */; };
+		70560720266FC98500510BA7 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7056071F266FC98500510BA7 /* NetworkDataFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		70050672266BBC1900168A21 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		7005067C266BC0AE00168A21 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		70050681266BC26300168A21 /* APIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStruct.swift; sourceTree = "<group>"; };
+		7056071A266FC69700510BA7 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		7056071F266FC98500510BA7 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 				70050655266BA06000168A21 /* AuthService.swift */,
 				7005067C266BC0AE00168A21 /* NetworkService.swift */,
 				70050681266BC26300168A21 /* APIStruct.swift */,
+				7056071D266FC96300510BA7 /* Models */,
+				7056071F266FC98500510BA7 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -116,6 +122,14 @@
 				7005065C266BA27A00168A21 /* AuthViewController.storyboard */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		7056071D266FC96300510BA7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7056071A266FC69700510BA7 /* FeedResponse.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,11 +225,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7056071B266FC69700510BA7 /* FeedResponse.swift in Sources */,
 				7005063C266B991600168A21 /* AuthViewController.swift in Sources */,
 				70050638266B991600168A21 /* AppDelegate.swift in Sources */,
 				70050661266BBA4400168A21 /* FeedViewController.swift in Sources */,
 				7005063A266B991600168A21 /* SceneDelegate.swift in Sources */,
 				7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */,
+				70560720266FC98500510BA7 /* NetworkDataFetcher.swift in Sources */,
 				70050656266BA06000168A21 /* AuthService.swift in Sources */,
 				70050682266BC26300168A21 /* APIStruct.swift in Sources */,
 			);

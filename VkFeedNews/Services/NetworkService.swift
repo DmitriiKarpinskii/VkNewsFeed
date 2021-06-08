@@ -27,7 +27,6 @@ final class NetworkService : Networking {
 
         var allParams : [String : String] = params
         allParams["v"] = APIStruct.version
-        allParams["filters"] = "post,photo"
         allParams["access_token"] = token
         
         let url = self.url(from: path, params: allParams)
