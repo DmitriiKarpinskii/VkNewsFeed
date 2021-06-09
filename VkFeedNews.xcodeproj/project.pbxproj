@@ -15,8 +15,6 @@
 		7005064F266B9DA000168A21 /* VKSdkFramework.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7005064E266B9DA000168A21 /* VKSdkFramework.xcframework */; };
 		70050656266BA06000168A21 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050655266BA06000168A21 /* AuthService.swift */; };
 		7005065D266BA27A00168A21 /* AuthViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7005065C266BA27A00168A21 /* AuthViewController.storyboard */; };
-		70050661266BBA4400168A21 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050660266BBA4400168A21 /* FeedViewController.swift */; };
-		70050673266BBC1900168A21 /* FeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70050672266BBC1900168A21 /* FeedViewController.storyboard */; };
 		7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7005067C266BC0AE00168A21 /* NetworkService.swift */; };
 		70050682266BC26300168A21 /* APIStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70050681266BC26300168A21 /* APIStruct.swift */; };
 		7056071B266FC69700510BA7 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7056071A266FC69700510BA7 /* FeedResponse.swift */; };
@@ -43,8 +41,6 @@
 		7005064E266B9DA000168A21 /* VKSdkFramework.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = VKSdkFramework.xcframework; path = Carthage/Build/VKSdkFramework.xcframework; sourceTree = "<group>"; };
 		70050655266BA06000168A21 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		7005065C266BA27A00168A21 /* AuthViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthViewController.storyboard; sourceTree = "<group>"; };
-		70050660266BBA4400168A21 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		70050672266BBC1900168A21 /* FeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeedViewController.storyboard; sourceTree = "<group>"; };
 		7005067C266BC0AE00168A21 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		70050681266BC26300168A21 /* APIStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIStruct.swift; sourceTree = "<group>"; };
 		7056071A266FC69700510BA7 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
@@ -97,7 +93,6 @@
 				70050658266BA06E00168A21 /* Services */,
 				7005067A266BBC7D00168A21 /* Auth */,
 				70560722266FD50500510BA7 /* Newsfeed */,
-				70050666266BBAB700168A21 /* FeedViewController */,
 				70050640266B991700168A21 /* Assets.xcassets */,
 				70050642266B991700168A21 /* LaunchScreen.storyboard */,
 				70050645266B991700168A21 /* Info.plist */,
@@ -123,15 +118,6 @@
 				7056071F266FC98500510BA7 /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		70050666266BBAB700168A21 /* FeedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				70050660266BBA4400168A21 /* FeedViewController.swift */,
-				70050672266BBC1900168A21 /* FeedViewController.storyboard */,
-			);
-			path = FeedViewController;
 			sourceTree = "<group>";
 		};
 		7005067A266BBC7D00168A21 /* Auth */ = {
@@ -238,7 +224,6 @@
 				70560733266FF9CD00510BA7 /* NewsfeedViewController.storyboard in Resources */,
 				70050641266B991700168A21 /* Assets.xcassets in Resources */,
 				7056073B2670003F00510BA7 /* NewsfeedCell.xib in Resources */,
-				70050673266BBC1900168A21 /* FeedViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +260,6 @@
 				7005063C266B991600168A21 /* AuthViewController.swift in Sources */,
 				70050638266B991600168A21 /* AppDelegate.swift in Sources */,
 				7056072A266FD53500510BA7 /* NewsfeedPresenter.swift in Sources */,
-				70050661266BBA4400168A21 /* FeedViewController.swift in Sources */,
 				7056072C266FD53500510BA7 /* NewsfeedRouter.swift in Sources */,
 				7005063A266B991600168A21 /* SceneDelegate.swift in Sources */,
 				7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */,
