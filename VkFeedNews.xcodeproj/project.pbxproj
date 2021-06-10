@@ -28,6 +28,7 @@
 		70560733266FF9CD00510BA7 /* NewsfeedViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70560732266FF9CD00510BA7 /* NewsfeedViewController.storyboard */; };
 		70560738266FFFE200510BA7 /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70560737266FFFE200510BA7 /* NewsfeedCell.swift */; };
 		7056073B2670003F00510BA7 /* NewsfeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7056073A2670003F00510BA7 /* NewsfeedCell.xib */; };
+		706807712672281300112CAF /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706807702672281300112CAF /* WebImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		70560732266FF9CD00510BA7 /* NewsfeedViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewsfeedViewController.storyboard; sourceTree = "<group>"; };
 		70560737266FFFE200510BA7 /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		7056073A2670003F00510BA7 /* NewsfeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsfeedCell.xib; sourceTree = "<group>"; };
+		706807702672281300112CAF /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				70050658266BA06E00168A21 /* Services */,
 				7005067A266BBC7D00168A21 /* Auth */,
 				70560722266FD50500510BA7 /* Newsfeed */,
+				7068076F267227EF00112CAF /* Helpers */,
 				70050640266B991700168A21 /* Assets.xcassets */,
 				70050642266B991700168A21 /* LaunchScreen.storyboard */,
 				70050645266B991700168A21 /* Info.plist */,
@@ -159,6 +162,14 @@
 				7056073A2670003F00510BA7 /* NewsfeedCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		7068076F267227EF00112CAF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				706807702672281300112CAF /* WebImageView.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +275,7 @@
 				7005063A266B991600168A21 /* SceneDelegate.swift in Sources */,
 				7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */,
 				7056072D266FD53500510BA7 /* NewsfeedModels.swift in Sources */,
+				706807712672281300112CAF /* WebImageView.swift in Sources */,
 				70560720266FC98500510BA7 /* NetworkDataFetcher.swift in Sources */,
 				7056072B266FD53500510BA7 /* NewsfeedWorker.swift in Sources */,
 				70050656266BA06000168A21 /* AuthService.swift in Sources */,
