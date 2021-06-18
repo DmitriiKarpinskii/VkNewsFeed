@@ -9,41 +9,50 @@
 import UIKit
 
 protocol NewsfeedPresentationLogic {
-  func presentData(response: Newsfeed.Model.Response.ResponseType)
+    func presentData(response: Newsfeed.Model.Response.ResponseType)
 }
 
 class NewsfeedPresenter: NewsfeedPresentationLogic {
-  weak var viewController: NewsfeedDisplayLogic?
+    weak var viewController: NewsfeedDisplayLogic?
+    var cellLauoutCalculator : FeedCellLayOutCalculatorProtocol = NewsfeedCellLayoutCalculator()
+    
+    
+    
     let dateFormatrer : DateFormatter = {
         let dt = DateFormatter()
         dt.locale = Locale(identifier: "ru_RU")
         dt.dateFormat = "d MMM 'в' HH:mm"
         return dt
     }()
-  
-  func presentData(response: Newsfeed.Model.Response.ResponseType) {
-  
-    switch response {
     
-    case .presentNewsfeed(let feed):
+    func presentData(response: Newsfeed.Model.Response.ResponseType) {
         
-        let cells = feed.items.map { (feedItem) in
-            cellViewModel(from: feedItem, profile: feed.profiles, groups: feed.groups)
+        switch response {
+        
+        case .presentNewsfeed(let feed):
+            
+            let cells = feed.items.map { (feedItem) in
+                cellViewModel(from: feedItem, profile: feed.profiles, groups: feed.groups)
+            }
+            
+            let feedViewModel = FeedViewModel.init(cells: cells)
+            print(".presentNewsfeed presenter")
+            viewController?.displayData(viewModel:
+                                            Newsfeed.Model.ViewModel.ViewModelData.displayNewsfeed(feedViewModel: feedViewModel))
         }
         
-        let feedViewModel = FeedViewModel.init(cells: cells)
-        print(".presentNewsfeed presenter")
-        viewController?.displayData(viewModel:
-                                        Newsfeed.Model.ViewModel.ViewModelData.displayNewsfeed(feedViewModel: feedViewModel))
     }
-    
-  }
     
     private func cellViewModel(from feedItem: FeedItem, profile: [Profile], groups: [Group]) -> FeedViewModel.Cell {
         
         let profile = self.profile(for: feedItem.sourceId, profiles: profile , groups: groups)
+        let photoAttachment = self.photoAttachment(feetItem: feedItem)
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatrer.string(from: date)
+        
+        let sizes = cellLauoutCalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachment)
+        
+        //        let sizes =
         
         return FeedViewModel.Cell.init(iconUrlString: profile.photo,
                                        name: profile.name,
@@ -52,12 +61,15 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
                                        likes: String(feedItem.likes?.count ?? 0),
                                        comments: String(feedItem.comments?.count ?? 0),
                                        shares: String(feedItem.reposts?.count ?? 0),
-                                       views: String(feedItem.views?.count ?? 0))
+                                       views: String(feedItem.views?.count ?? 0),
+                                       photoAttechment: photoAttachment,
+                                       sizes: sizes)
+        
     }
-  
+    
     
     private func profile(for sourseId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresetable {
-    
+        
         let profilesOrGroups : [ProfileRepresetable] = sourseId >= 0 ? profiles : groups
         let normalSoutceId  = sourseId > 0 ? sourseId : -sourseId
         let profileRepresetable = profilesOrGroups.first { (myProfileRepresetable) -> Bool in
@@ -67,4 +79,20 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
         
     }
+    
+    private func photoAttachment(feetItem: FeedItem) -> FeedViewModel.FeedCellPhotoAttechment? {
+        guard let photos = feetItem.attachments?.compactMap({ (attachment) in
+            attachment.photo
+        }), let firstPhoto = photos.first else {
+            return nil
+            
+        }
+        return FeedViewModel.FeedCellPhotoAttechment.init(photoUrlString: firstPhoto.srcBIG,
+                                                          weight: firstPhoto.width,
+                                                          hight: firstPhoto.height)
+    }
+    
+    
+    
+    
 }

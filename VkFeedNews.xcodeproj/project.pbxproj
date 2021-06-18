@@ -29,6 +29,7 @@
 		70560738266FFFE200510BA7 /* NewsfeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70560737266FFFE200510BA7 /* NewsfeedCell.swift */; };
 		7056073B2670003F00510BA7 /* NewsfeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7056073A2670003F00510BA7 /* NewsfeedCell.xib */; };
 		706807712672281300112CAF /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706807702672281300112CAF /* WebImageView.swift */; };
+		706807752672760B00112CAF /* NewsfeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706807742672760B00112CAF /* NewsfeedCellLayoutCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		70560737266FFFE200510BA7 /* NewsfeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCell.swift; sourceTree = "<group>"; };
 		7056073A2670003F00510BA7 /* NewsfeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsfeedCell.xib; sourceTree = "<group>"; };
 		706807702672281300112CAF /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		706807742672760B00112CAF /* NewsfeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsfeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				70560737266FFFE200510BA7 /* NewsfeedCell.swift */,
+				706807742672760B00112CAF /* NewsfeedCellLayoutCalculator.swift */,
 				7056073A2670003F00510BA7 /* NewsfeedCell.xib */,
 			);
 			path = Cell;
@@ -275,6 +278,7 @@
 				7005063A266B991600168A21 /* SceneDelegate.swift in Sources */,
 				7005067D266BC0AE00168A21 /* NetworkService.swift in Sources */,
 				7056072D266FD53500510BA7 /* NewsfeedModels.swift in Sources */,
+				706807752672760B00112CAF /* NewsfeedCellLayoutCalculator.swift in Sources */,
 				706807712672281300112CAF /* WebImageView.swift in Sources */,
 				70560720266FC98500510BA7 /* NetworkDataFetcher.swift in Sources */,
 				7056072B266FD53500510BA7 /* NewsfeedWorker.swift in Sources */,
