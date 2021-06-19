@@ -26,7 +26,7 @@ protocol FeedCellViewModel {
 protocol FeedCellSizes {
     var postLabelFrame : CGRect { get }
     var attachmentFrame : CGRect { get }
-    var bottomView: CGRect { get }
+    var bottomViewFrame: CGRect { get }
     var totalHeight: CGFloat { get }
     
 }
@@ -54,6 +54,11 @@ class NewsfeedCell : UITableViewCell {
     @IBOutlet weak var bottomView: UIView!
     
     
+    override func prepareForReuse() {
+//        iconImageView.set(imageUrl: nil)
+//        postImageView.set(imageUrl: nil)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -79,7 +84,7 @@ class NewsfeedCell : UITableViewCell {
         
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
-        bottomView.frame = viewModel.sizes.bottomView
+        bottomView.frame = viewModel.sizes.bottomViewFrame
     
         
         if let photoAttechment = viewModel.photoAttechment {

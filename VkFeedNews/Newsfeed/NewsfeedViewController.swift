@@ -44,12 +44,13 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
         //    table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         setup()
         table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
+        table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
+        
         
         table.separatorStyle = .none
         table.backgroundColor = .clear
         view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         interactor?.makeRequest(request: .getNewsfeed)
-        
     }
     
     func displayData(viewModel: Newsfeed.Model.ViewModel.ViewModelData) {
@@ -66,26 +67,26 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic {
 
 extension NewsfeedViewController : UITableViewDelegate, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
-        let cellViewModel = feedViewModel.cells[indexPath.row]
-        print(cellViewModel.sizes)
-        cell.set(viewModel: cellViewModel)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCell.reuseId, for: indexPath) as! NewsfeedCell
+//        let cellViewModel = feedViewModel.cells[indexPath.row]
+        
+//  cell.set(viewModel: cellViewModel)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsfeedCodeCell.reuseId, for: indexPath) as! NewsfeedCodeCell
+        cell.textLabel?.text = "index \(indexPath.row)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = self.feedViewModel.cells[indexPath.row]
-        return cellViewModel.sizes.totalHeight
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("select row")
-//        interactor?.makeRequest(request: .getFeed)
+//        return cellViewModel.sizes.totalHeight
+        return 212
     }
 }
