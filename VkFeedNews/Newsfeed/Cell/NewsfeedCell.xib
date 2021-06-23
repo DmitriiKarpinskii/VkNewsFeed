@@ -136,9 +136,6 @@
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet destination="rIg-8B-cw0" id="x4c-Up-nMs">
-                    <string key="property">		sharesLabel</string>
-                </outlet>
                 <outlet property="bottomView" destination="8Lp-gB-77t" id="rYP-uz-qHe"/>
                 <outlet property="cardView" destination="Jzq-Fb-e88" id="Oaw-6X-eEs"/>
                 <outlet property="commentsLabel" destination="apq-SM-FMQ" id="zbn-ji-B0o"/>
@@ -148,6 +145,7 @@
                 <outlet property="nameLabel" destination="bA0-TG-seJ" id="xm4-Gj-XOh"/>
                 <outlet property="postImageView" destination="1gg-dC-4ZS" id="SLI-g2-TUy"/>
                 <outlet property="postLabel" destination="hn7-S2-cp2" id="4w9-mj-2Uo"/>
+                <outlet property="sharesLabel" destination="rIg-8B-cw0" id="zXY-ac-Lj6"/>
                 <outlet property="viewsLabel" destination="jr6-9o-we0" id="x40-vc-ch8"/>
             </connections>
             <point key="canvasLocation" x="-202.17391304347828" y="98.772321428571431"/>

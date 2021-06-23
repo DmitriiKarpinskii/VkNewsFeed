@@ -17,7 +17,7 @@ class WebImageView : UIImageView {
         
         if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)) {
             self.image = UIImage(data: cachedResponse.data)
-            print("from cach")
+//            print("from cach")
             return
         }
         
@@ -26,7 +26,7 @@ class WebImageView : UIImageView {
                 if let data = data, let response = response {
                     self?.image = UIImage(data: data)
                     self?.handleLoadedImage(data: data, response: response)
-                    print("from internet")
+//                    print("from internet")
                 }
             }
         }

@@ -37,6 +37,18 @@ final class NewsfeedCodeCell : UITableViewCell {
         return label
     }()
     
+    let moreTextButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setTitleColor(#colorLiteral(red: 0.4, green: 0.6235294118, blue: 0.831372549, alpha: 1), for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.setTitle("Показать полность...", for: .normal)
+//        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isEnabled = true
+        return button
+    }()
+    
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         //        imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -178,16 +190,17 @@ final class NewsfeedCodeCell : UITableViewCell {
         return label
     }()
     
-    
+    override func prepareForReuse() {
+        iconImageView.set(imageUrl: nil)
+        postImageView.set(imageUrl: nil)
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addSubview(cardView)
-        
         backgroundColor = .clear
         selectionStyle = .none
-        
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
         
@@ -196,7 +209,19 @@ final class NewsfeedCodeCell : UITableViewCell {
         overlayThirdLayerOnTopView()
         overlayThirdOnBottomView()
         overlayForceLayerOnBottomViewViews()
+        
+        iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
+        iconImageView.clipsToBounds = true
+
+        contentView.isUserInteractionEnabled = false // без этого кнопка не нажимется
+        
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
     }
+    
+    @objc func moreTextButtonTouch() {
+            print("123")
+    }
+
     
     func set(viewModel : FeedCellViewModel) {
         
@@ -209,11 +234,11 @@ final class NewsfeedCodeCell : UITableViewCell {
         commentsLabel.text = viewModel.comments
         sharesLabel.text = viewModel.shares
         viewsLabel.text =  viewModel.views
-        
+    
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
-    
+        moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
         if let photoAttechment = viewModel.photoAttechment {
             postImageView.set(imageUrl: photoAttechment.photoUrlString)
@@ -221,8 +246,6 @@ final class NewsfeedCodeCell : UITableViewCell {
         } else {
             postImageView.isHidden = true
         }
-
-
     }
     
     private func overlayFirstLayer() {
@@ -235,7 +258,8 @@ final class NewsfeedCodeCell : UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(postImageView)
         cardView.addSubview(bottomView)
-        
+        cardView.addSubview(moreTextButton)
+
         topView.leadingAnchor.constraint(equalTo: cardView.leadingAnchor, constant: 8).isActive = true
         topView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -8).isActive = true
         topView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 8).isActive = true
@@ -245,6 +269,9 @@ final class NewsfeedCodeCell : UITableViewCell {
         bottomView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor).isActive = true
         bottomView.bottomAnchor.constraint(equalTo: cardView.bottomAnchor).isActive = true
         bottomView.heightAnchor.constraint(equalToConstant: Constants.bottomViewHeight).isActive = true
+        
+        
+
     }
     
     private func overlayThirdLayerOnTopView() {

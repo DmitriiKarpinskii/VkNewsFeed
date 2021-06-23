@@ -28,6 +28,7 @@ protocol FeedCellSizes {
     var attachmentFrame : CGRect { get }
     var bottomViewFrame: CGRect { get }
     var totalHeight: CGFloat { get }
+    var moreTextButtonFrame: CGRect { get }
     
 }
 
@@ -49,14 +50,14 @@ class NewsfeedCell : UITableViewCell {
     @IBOutlet weak var postImageView: WebImageView!
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
-    @IBOutlet weak var         sharesLabel: UILabel!
+    @IBOutlet weak var sharesLabel: UILabel!
     @IBOutlet weak var viewsLabel: UILabel!
     @IBOutlet weak var bottomView: UIView!
     
     
     override func prepareForReuse() {
-//        iconImageView.set(imageUrl: nil)
-//        postImageView.set(imageUrl: nil)
+        iconImageView.set(imageUrl: nil)
+        postImageView.set(imageUrl: nil)
     }
     
     override func awakeFromNib() {
@@ -79,7 +80,7 @@ class NewsfeedCell : UITableViewCell {
         postLabel.text = viewModel.text
         likesLabel.text = viewModel.likes
         commentsLabel.text = viewModel.comments
-                sharesLabel.text = viewModel.shares
+        sharesLabel.text = viewModel.shares
         viewsLabel.text =  viewModel.views
         
         postLabel.frame = viewModel.sizes.postLabelFrame
