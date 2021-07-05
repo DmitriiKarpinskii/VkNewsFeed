@@ -30,10 +30,8 @@ class AuthService : NSObject, VKSdkDelegate , VKSdkUIDelegate {
         print("VKSdk.initialize")
         vkSdk.register(self)
         vkSdk.uiDelegate = self
-       
     }
-    
-    
+
     func wakeUpSession() {
         let scope = ["wall, friends"]
         VKSdk.wakeUpSession(scope) { [delegate] (state , error) in
@@ -75,6 +73,3 @@ class AuthService : NSObject, VKSdkDelegate , VKSdkUIDelegate {
     }
     
 }
-
-// https://api.vk.com/method/newsfeed.get?&filters=post,photo&access_token=6f956ac5923892b7c1d71ff566302914fab4e9a0ac74ada58d00cf6a3fd978d9e4625f019d9aa9720f183&v=5.131
-

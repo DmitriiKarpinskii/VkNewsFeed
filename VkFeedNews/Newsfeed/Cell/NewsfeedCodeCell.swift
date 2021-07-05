@@ -8,9 +8,19 @@
 import Foundation
 import UIKit
 
+
+
+protocol NewsFeedCodeCellDelegate : class {
+    func revealPost(for cell: NewsfeedCodeCell)
+}
+
 final class NewsfeedCodeCell : UITableViewCell {
     
     static let reuseId = "NewsfeedCodeCell"
+    weak var delegate : NewsFeedCodeCellDelegate?
+    
+    
+    
     // First layer
     let cardView: UIView = {
         let view = UIView()
@@ -48,6 +58,8 @@ final class NewsfeedCodeCell : UITableViewCell {
         button.isEnabled = true
         return button
     }()
+    
+    let galleryCollectionView = GalleryCollectionView()
     
     let postImageView: WebImageView = {
         let imageView = WebImageView()
@@ -219,7 +231,8 @@ final class NewsfeedCodeCell : UITableViewCell {
     }
     
     @objc func moreTextButtonTouch() {
-            print("123")
+        print("Show more")
+        delegate?.revealPost(for: self)
     }
 
     
@@ -240,11 +253,23 @@ final class NewsfeedCodeCell : UITableViewCell {
         bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
-        if let photoAttechment = viewModel.photoAttechment {
-            postImageView.set(imageUrl: photoAttechment.photoUrlString)
+        print(viewModel.photoAttechments.count)
+        print(viewModel.name)
+    
+        
+        if let photoAttachment = viewModel.photoAttechments.first, viewModel.photoAttechments.count == 1 {
+            postImageView.set(imageUrl: photoAttachment.photoUrlString)
             postImageView.isHidden = false
+            galleryCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachmentFrame
+        } else if viewModel.photoAttechments.count > 1 {
+            galleryCollectionView.frame = viewModel.sizes.attachmentFrame
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.set(photos: viewModel.photoAttechments)
         } else {
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
     }
     
@@ -257,6 +282,7 @@ final class NewsfeedCodeCell : UITableViewCell {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         cardView.addSubview(moreTextButton)
 
