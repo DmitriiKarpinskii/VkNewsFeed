@@ -60,19 +60,20 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
             return postId == feedItem.postId
         }
         
-//        let isFullSized = revealdedPostIds.contains(feedItem.postId)
+        //        let isFullSized = revealdedPostIds.contains(feedItem.postId)
         
         let sizes = cellLauoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachments, isFullSizedPost: isFullSized)
-    
+        let postText = feedItem.text?.replacingOccurrences(of: "<br>", with: "\n")
+        
         return FeedViewModel.Cell.init(postId: feedItem.postId,
                                        iconUrlString: profile.photo,
                                        name: profile.name,
                                        date: dateTitle,
-                                       text: feedItem.text,
-                                       likes: String(feedItem.likes?.count ?? 0),
-                                       comments: String(feedItem.comments?.count ?? 0),
-                                       shares: String(feedItem.reposts?.count ?? 0),
-                                       views: String(feedItem.views?.count ?? 0),
+                                       text: postText,
+                                       likes: formattedCounter(feedItem.likes?.count),
+                                       comments: formattedCounter(feedItem.comments?.count),
+                                       shares: formattedCounter(feedItem.reposts?.count),
+                                       views: formattedCounter(feedItem.views?.count),
                                        photoAttechments: photoAttachments,
                                        sizes: sizes)
         
@@ -91,8 +92,24 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
     }
     
+    private func formattedCounter(_ counter: Int?) -> String? {
+        guard let counter = counter , counter > 0 else { return nil }
+        
+        var counterString = String(counter)
+        
+        if 4...6 ~= counterString.count {
+//            counterString = String(counter / 1000) + "K"
+            counterString = String(counterString.dropLast(3)) + "K"
+        } else if counterString.count > 6 {
+            counterString = String(counterString.dropLast(6)) + "M"
+        }
+        
+        return counterString
+        
+    }
+    
     private func photoAttachment(feedItem: FeedItem) -> FeedViewModel.FeedCellPhotoAttechment? {
-       
+        
         guard let photos = feedItem.attachments?.compactMap({ (attachment) in
             attachment.photo
         }), let firstPhoto = photos.first else {
@@ -110,7 +127,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
         return attachments.compactMap { (attachment) -> FeedViewModel.FeedCellPhotoAttechment? in
             guard let photo = attachment.photo else { return nil }
-        
+            
             return FeedViewModel.FeedCellPhotoAttechment.init(photoUrlString: photo.srcBIG,
                                                               width: photo.width,
                                                               height: photo.height)

@@ -36,15 +36,29 @@ final class NewsfeedCodeCell : UITableViewCell {
 //        view.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
         return view
     }()
+//
+//    let postLabel: UILabel = {
+//        let label = UILabel()
+//        //        label.translatesAutoresizingMaskIntoConstraints = false
+//        label.numberOfLines = 0
+//        label.font = Constants.postLabelFont
+//        label.textColor = #colorLiteral(red: 0.1725490196, green: 0.1764705882, blue: 0.1803921569, alpha: 1)
+////        label.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+//        return label
+//    }()
     
-    let postLabel: UILabel = {
-        let label = UILabel()
-        //        label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 0
-        label.font = Constants.postLabelFont
-        label.textColor = #colorLiteral(red: 0.1725490196, green: 0.1764705882, blue: 0.1803921569, alpha: 1)
-//        label.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        return label
+    let postLabel : UITextView = {
+        let textView = UITextView()
+        textView.font = Constants.postLabelFont
+        textView.isScrollEnabled = false
+        textView.isSelectable = true
+        textView.isUserInteractionEnabled = true
+        textView.isEditable = false
+        textView.dataDetectorTypes = UIDataDetectorTypes.all
+        
+        let padding = textView.textContainer.lineFragmentPadding
+        textView.textContainerInset = UIEdgeInsets.init(top: 0, left: -padding, bottom: 0, right: -padding)
+        return textView
     }()
     
     let moreTextButton: UIButton = {
@@ -196,7 +210,7 @@ final class NewsfeedCodeCell : UITableViewCell {
     let viewsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .clear
+        label.textColor = #colorLiteral(red: 0.5058823529, green: 0.5490196078, blue: 0.6, alpha: 1)
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.lineBreakMode = .byClipping
         return label
@@ -246,7 +260,7 @@ final class NewsfeedCodeCell : UITableViewCell {
         likesLabel.text = viewModel.likes
         commentsLabel.text = viewModel.comments
         sharesLabel.text = viewModel.shares
-        viewsLabel.text =  viewModel.views
+        viewsLabel.text = viewModel.views
     
         postLabel.frame = viewModel.sizes.postLabelFrame
         postImageView.frame = viewModel.sizes.attachmentFrame
