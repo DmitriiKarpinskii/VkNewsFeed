@@ -18,10 +18,11 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsFeedCo
     
     var interactor: NewsfeedBusinessLogic?
     var router: (NSObjectProtocol & NewsfeedRoutingLogic)?
-    private var feedViewModel = FeedViewModel(cells: [])
+    private var feedViewModel = FeedViewModel(cells: [], footerTitle: nil)
     
     @IBOutlet weak var table: UITableView!
     private var titleView = TitleView()
+    private lazy var footerView = FooterView()
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -73,6 +74,7 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsFeedCo
         table.register(UINib(nibName: "NewsfeedCell", bundle: nil), forCellReuseIdentifier: NewsfeedCell.reuseId)
         table.register(NewsfeedCodeCell.self, forCellReuseIdentifier: NewsfeedCodeCell.reuseId)
         table.addSubview(refreshControl)
+        table.tableFooterView = footerView
     }
     
     private func setupTopBars() {
@@ -95,8 +97,17 @@ class NewsfeedViewController: UIViewController, NewsfeedDisplayLogic, NewsFeedCo
             self.feedViewModel = feedViewModel
             table.reloadData()
             refreshControl.endRefreshing()
+            footerView.setTitle(feedViewModel.footerTitle)
         case .displayUser(userViewModel: let userViewModel):
             titleView.set(userViewModel: userViewModel)
+        case .displayFooterLoader:
+            footerView.showLoader()
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
+            interactor?.makeRequest(request: Newsfeed.Model.Request.RequestType.getNextBatch)
         }
     }
     

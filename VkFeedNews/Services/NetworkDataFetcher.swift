@@ -9,9 +9,9 @@ import Foundation
 
 
 protocol DataFetcher {
-    func getFeed(respose: @escaping (FeedResponse?) -> Void)
+    func getFeed(nextBatchFrom: String? ,respose: @escaping (FeedResponse?) -> Void)
+    func getUser(response: @escaping (UserResponse?) -> Void)
     
-    func getUser(respose: @escaping (UserResponse?) -> Void)
 }
 
 struct NetworkDataFetcher : DataFetcher {
@@ -24,24 +24,25 @@ struct NetworkDataFetcher : DataFetcher {
         self.authService = authService
     }
     
-    func getUser(respose: @escaping (UserResponse?) -> Void) {
+    func getUser(response: @escaping (UserResponse?) -> Void) {
         
         guard let userID = authService.userId else { return }
         let params = [ "user_ids" : userID, "fields" : "photo_100"]
         networking.request(path: APIStruct.user, params: params) { (data, error) in
             if let error = error {
                 print("Error received requsting data: \(error.localizedDescription)")
-                respose(nil)
+                response(nil)
             }
             
             let decoded = self.decodeJSON(type: UserResponseWrapped.self, from: data)
-            respose(decoded?.response.first)
+            response(decoded?.response.first)
         }
 
     }
     
-    func getFeed(respose: @escaping (FeedResponse?) -> Void) {
-        let params = ["filters" : "post, foto"]
+    func getFeed(nextBatchFrom: String?, respose: @escaping (FeedResponse?) -> Void) {
+        var params = ["filters" : "post, foto"]
+        params["start_from"] = nextBatchFrom
         networking.request(path: APIStruct.newsFeed, params: params) { (data, error) in
             if let error = error {
                 print("Error received requsting data: \(error.localizedDescription)")
