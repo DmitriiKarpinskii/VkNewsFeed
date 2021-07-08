@@ -42,9 +42,11 @@ class NewsfeedInteractor: NewsfeedBusinessLogic {
             presentFeed()
             print("intreactor reveal post")
             
+        case .getUser:
+            fetcher.getUser { (userResponse) in
+                self.presenter?.presentData(response: Newsfeed.Model.Response.ResponseType.presentUserInfo(user: userResponse))
+            }
         }
-        
-        
     }
     
     private func presentFeed() {

@@ -253,8 +253,8 @@ final class NewsfeedCodeCell : UITableViewCell {
         bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
-        print(viewModel.photoAttechments.count)
-        print(viewModel.name)
+//        print(viewModel.photoAttechments.count)
+//        print(viewModel.name)
     
         
         if let photoAttachment = viewModel.photoAttechments.first, viewModel.photoAttechments.count == 1 {

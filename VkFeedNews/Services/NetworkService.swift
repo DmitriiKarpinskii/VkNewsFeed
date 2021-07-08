@@ -51,7 +51,7 @@ final class NetworkService : Networking {
 
         components.scheme = APIStruct.scheme
         components.host = APIStruct.host
-        components.path = APIStruct.newsFeed
+        components.path = path
         components.queryItems = params.map { URLQueryItem(name: $0, value: $1) }
         return components.url!
 
