@@ -10,7 +10,6 @@ import UIKit
 
 class WebImageView : UIImageView {
     
-    
     private var currentUrlString: String?
     
     func set(imageUrl: String?) {
@@ -26,7 +25,7 @@ class WebImageView : UIImageView {
             return
         }
         
-        let dataTask = URLSession.shared.dataTask(with: url) { [weak self ] (data, response,error) in
+        let dataTask = URLSession.shared.dataTask(with: url) { [weak self] (data, response,error) in
             DispatchQueue.main.async {
                 if let data = data, let response = response {
                     self?.handleLoadedImage(data: data, response: response)

@@ -55,6 +55,7 @@ class NewsfeedPresenter: NewsfeedPresentationLogic {
         
         let profile = self.profile(for: feedItem.sourceId, profiles: profile , groups: groups)
         let photoAttachments = self.photoAttachments(feedItem: feedItem)
+        
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatrer.string(from: date)
         
