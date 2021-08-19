@@ -103,9 +103,9 @@
 		7005062B266B991600168A21 = {
 			isa = PBXGroup;
 			children = (
+				701F649426CE5AEC008210B9 /* .gitignore */,
 				70050636266B991600168A21 /* VkFeedNews */,
 				70050635266B991600168A21 /* Products */,
-				701F649426CE5AEC008210B9 /* .gitignore */,
 				7005064D266B9DA000168A21 /* Frameworks */,
 			);
 			sourceTree = "<group>";
